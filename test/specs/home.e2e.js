@@ -1,4 +1,5 @@
 const HomePage = require('../pageobjects/home.page');
+const SearchPage = require('../pageobjects/search.page');
 
 describe('The Home Search Functionality', () => {
 
@@ -9,9 +10,8 @@ describe('The Home Search Functionality', () => {
     it('should remain on home page after search with blank criteria', () => {
 
         const infoText = '¿Buscas un Terapeuta?';
-
-
         const url = browser.getUrl();
+
         HomePage.doSearch('');
         expect(HomePage.lblInfo).toHaveText(infoText, {ignoreCase: true});
         expect(url).toEqual('https://develop.terapeutica.digital/#/');
@@ -21,9 +21,17 @@ describe('The Home Search Functionality', () => {
 
         HomePage.lblOcupacional.click();
         const placeHolderValue = '¿Buscas a alguien o algo en específico?';
-
         expect(HomePage.inputSearch).toBeFocused();
         expect(HomePage.inputSearch).toHaveAttr('placeholder', placeHolderValue);
+    });
+
+    it('should search a specialist and display the results', () => {
+
+        const searchTerm = 'Maria'
+
+        HomePage.doSearch(searchTerm);
+        HomePage.waitForSearchResults(searchTerm);
+        expect(HomePage.lblSpecialistName.getText()).toContain(searchTerm);
     });
 
 });
