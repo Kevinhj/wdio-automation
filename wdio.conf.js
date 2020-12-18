@@ -23,6 +23,14 @@ exports.config = {
     exclude: [
         // 'path/to/excluded/files'
     ],
+    suites: {
+        home: [
+            './test/specs/home.e2e.js',
+        ],
+        search: [
+            './test/specs/search.e2e.js'
+        ]
+    },
     //
     // ============
     // Capabilities

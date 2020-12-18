@@ -1,5 +1,4 @@
 const HomePage = require('../pageobjects/home.page');
-const SearchPage = require('../pageobjects/search.page');
 
 describe('The Home Search Functionality', () => {
 
