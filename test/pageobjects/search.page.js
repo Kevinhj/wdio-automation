@@ -9,6 +9,9 @@ class SearchPage extends Page {
     get linkOcupacional () {return $('a=Ocupacional')}
     get inputSearch () { return $('//div/input[@class=\'form-control\']') }
     get btnSearch () { return $('//div/input[@value=\'Buscar\']') }
+    get iconMap () { return $('.icon-map-1') }
+    get map () { return $('#map') }
+
 
     doSwitchSpecialities(speciality){
         switch (speciality){
@@ -36,6 +39,10 @@ class SearchPage extends Page {
     doSearch(term){
         this.inputSearch.setValue(term);
         this.btnSearch.click();
+    }
+
+    doHideMap(){
+       this.iconMap.click();
     }
 
     open () {

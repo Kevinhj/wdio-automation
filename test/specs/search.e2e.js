@@ -29,4 +29,9 @@ describe('2. Results: The Search Result Functionality', () => {
         expect(SearchPage.therapistNameResult(nameSearch).getText()).toContain(nameSearch);
     });
 
+    it('should hide the map from the page', () => {
+        SearchPage.doHideMap();
+        expect(SearchPage.map).not.toBeDisplayed();
+    });
+
 });
