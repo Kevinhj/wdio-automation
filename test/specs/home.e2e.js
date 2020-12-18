@@ -1,6 +1,6 @@
 const HomePage = require('../pageobjects/home.page');
 
-describe('The Home Search Functionality', () => {
+describe('1. Home Page: The Home Search Functionality', () => {
 
     before(()=> {
         HomePage.open();
@@ -26,11 +26,11 @@ describe('The Home Search Functionality', () => {
 
     it('should search a specialist and display the results', () => {
 
-        const searchTerm = 'Maria'
+        const nameSearch = 'Maria'
 
-        HomePage.doSearch(searchTerm);
-        HomePage.waitForSearchResults(searchTerm);
-        expect(HomePage.lblSpecialistName.getText()).toContain(searchTerm);
+        HomePage.doSearch(nameSearch);
+        HomePage.waitForSearchResults(nameSearch);
+        expect(HomePage.lblTherapistName.getText()).toContain(nameSearch);
     });
 
 });

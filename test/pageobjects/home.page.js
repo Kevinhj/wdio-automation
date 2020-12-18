@@ -6,16 +6,16 @@ class HomePage extends Page {
     get btnSearch () { return $('.btn_search') }
     get lblInfo () { return $('.col-lg-6 h3')}
     get lblOcupacional () {return $('label=Ocupacional')}
-    get lblSpecialistName () {return $('//div/h3')}
+    get lblTherapistName () {return $('//div/h3')}
 
-    doSearch(term){
-        this.inputSearch.setValue(term);
+    doSearch(name){
+        this.inputSearch.setValue(name);
         this.btnSearch.click();
     }
 
-    waitForSearchResults(searchTerm){
+    waitForSearchResults(name){
         browser.waitUntil(
-            () => this.lblSpecialistName.getText().includes(searchTerm),
+            () => this.lblTherapistName.getText().includes(name),
             {
                 timeout: 5000,
                 timeoutMsg: 'expected text to be different after 5s'

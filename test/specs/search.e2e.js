@@ -2,7 +2,7 @@ const { defaultSpecialityList } = require('../helpers/data.helper');
 
 const SearchPage = require('../pageobjects/search.page');
 
-describe('The Search Result Functionality', () => {
+describe('2. Results: The Search Result Functionality', () => {
 
     before(()=> {
         SearchPage.open();
@@ -20,6 +20,13 @@ describe('The Search Result Functionality', () => {
 
         SearchPage.doSwitchSpecialities(testData.ocupacional);
         expect(browser.getUrl()).toEqual('https://develop.terapeutica.digital/#/search?sp=ocupational');
+    });
+
+    it('should display the search result', () => {
+        const nameSearch = 'Maria'
+        SearchPage.doSearch(nameSearch);
+
+        expect(SearchPage.therapistNameResult(nameSearch).getText()).toContain(nameSearch);
     });
 
 });

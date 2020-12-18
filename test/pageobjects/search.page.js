@@ -2,9 +2,13 @@ const Page = require('./page');
 
 class SearchPage extends Page {
 
+    therapistNameLocator = '//h3[text()[contains(.,\'[name]\')]]'
+
     get linkFisica () {return $('a=Física')}
     get linkLenguaje () {return $('a=Lenguaje')}
     get linkOcupacional () {return $('a=Ocupacional')}
+    get inputSearch () { return $('//div/input[@class=\'form-control\']') }
+    get btnSearch () { return $('//div/input[@value=\'Buscar\']') }
 
     doSwitchSpecialities(speciality){
         switch (speciality){
@@ -23,6 +27,15 @@ class SearchPage extends Page {
             default:
                 console.log('Invalid speciality');
         }
+    }
+
+    therapistNameResult(name){
+        return $(this.therapistNameLocator.replace('[name]', name))
+    }
+
+    doSearch(term){
+        this.inputSearch.setValue(term);
+        this.btnSearch.click();
     }
 
     open () {
