@@ -34,4 +34,17 @@ describe('2. Results: The Search Result Functionality', () => {
         expect(SearchPage.map).not.toBeDisplayed();
     });
 
+    it('should hit the specialist/ webservice', () => {
+        const nameSearch = 'Maria'
+        SearchPage.doSearch(nameSearch);
+        browser.setupInterceptor();
+        SearchPage.displayCompleteProfile();
+
+        browser.pause(1000);
+        const request = browser.getRequest(1);
+        expect(request.url).toEqual('https://javito-stage.herokuapp.com/v1/specialist/37378b04-4b69-452e-9fad-e83959388f41');
+        expect(request.method).toEqual('GET');
+
+    });
+
 });

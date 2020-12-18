@@ -11,6 +11,7 @@ class SearchPage extends Page {
     get btnSearch () { return $('//div/input[@value=\'Buscar\']') }
     get iconMap () { return $('.icon-map-1') }
     get map () { return $('#map') }
+    get linkProfile () { return $('=Ver Perfil Completo')}
 
 
     doSwitchSpecialities(speciality){
@@ -43,6 +44,10 @@ class SearchPage extends Page {
 
     doHideMap(){
        this.iconMap.click();
+    }
+
+    displayCompleteProfile(){
+        this.linkProfile.click();
     }
 
     open () {
